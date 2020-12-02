@@ -2,11 +2,11 @@
   <div id="app">
     <h1>Personal Contact Book</h1>   
     <hr>
-    <input class="search" type="text" v-model="search" placeholder="Search"> 
+    <input class="search" type="text" placeholder="Search contacts..."> 
     <ContactList
-    v-bind:contacts="contacts"
-    @remove="removeContact"
-     />
+      v-bind:contacts="contacts"
+      @remove="removeContact"
+    />
   </div>
 </template>
 
@@ -17,19 +17,28 @@ export default {
   data(){
     return {
       contacts: [
-          {id: 1, fullName: "Romaniv Roma Sergiyovich"},
-          {id: 2, fullName: "Vodopyan Max Alexandrovich"},
-          {id: 3, fullName: "Shevchnko Vlad Ihorovich"},
-          {id: 4, fullName: "Shevchnko Vlad Ihorovich"},
-          {id: 5, fullName: "Shevchnko Vlad Ihorovich"}
-      ]
+          {id: 1, title: "Romaniv Roma Sergiyovich"},
+          {id: 2, title: "Vodopyan Max Alexandrovich"},
+          {id: 3, title: "Shevchnko Vlad Ihorovich"},
+          {id: 4, title: "Shevchnko Vlad Ihorovich"},
+          {id: 5, title: "Shevchnko Vlad Ihorovich"}
+      ],
+      // search: ''
     }
   },
   methods:{
     removeContact(id){
-      this.contacts = this.contacts.filter(c => c.id !==id)
+        this.contacts = this.contacts.filter(c => c.id !==id)
     }
+  
   },
+  // computed:{
+  //   filterContacts: function(){
+  //     this.contacts = this.contacts.filter((c) =>{
+  //       return contact.fullName.match(this.search);
+  //     })
+  //   }
+  // },
   components: {
     ContactList
   }
@@ -47,7 +56,7 @@ export default {
   margin: 0 auto;
   background: darkorchid;
   padding: 25px;
-  border-radius: 5% 0;
+  border-radius: 0 5% 5% 0;
 }
 .search{
   margin-top: 20px;

@@ -1,12 +1,11 @@
 <template>
     <li>
         <span>
-            <strong>{{contact.id}}).</strong>
-            {{contact.fullName}}
+            <strong>{{index+1}}).</strong>
+            {{contact.title}}
         </span>
             <button class="remove" v-on:click="$emit('remove',contact.id)"></button>
     </li>
-
 </template>
 
 <script>
@@ -15,7 +14,8 @@ export default {
         contact: {
             type: Object,
             required: true
-        }
+        },
+        index: Number
     }
 }
 </script>
